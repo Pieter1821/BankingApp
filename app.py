@@ -28,13 +28,13 @@ class TransactionLog:
         self.transaction.append((date, amount))
 
     def write_to_file(self):
-        with open(f"{self.name}_transaction.txt", 'w') as f:
+        with open(f" {self.name} _transaction.txt", 'w') as f:
             for transaction in self.transaction:
                 f.write(
-                    f"{transaction[0]}: {transaction[1]} {transaction[2]}\n")
+                    f"{transaction[0]}: {transaction[1]}\n")
 
     def __str__(self):
-        return "\n".join([f"{transaction[0]} : {transaction[1]} : {transaction[2]}"])
+        return "\n".join([f"{transaction[0]} : {transaction[1]}"for transaction in self.transaction])
 
 
 account = BankAccount("John Smith", 0)
@@ -61,7 +61,7 @@ while True:
     elif choice == 3:
         print(account)
     elif choice == 4:
-         print(transaction_log)
+         print(transaction_log.__str__())
     elif choice == 5:
         transaction_log.write_to_file()
 
